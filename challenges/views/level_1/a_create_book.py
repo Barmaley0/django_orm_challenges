@@ -1,7 +1,7 @@
 """
 В этом задании вам нужно реализовать функцию create_book, которая создаёт в БД строку с новой книгой.
 
-Чтобы проверить, работает ли ваш код, запустите runserver и сделайте POST-запрос на 127.0.0.1:8000/book/create/
+Чтобы проверить, работает ли ваш код, запустите runserver и сделайте POST-запрос на https://127.0.0.1:8000/book/create/
 с теми же параметрами. Если всё отработало без ошибок и ручка возвращает вам описание новой книги в json-формате,
 задание выполнено.
 
@@ -11,10 +11,8 @@ from django.http import HttpRequest, HttpResponse, HttpResponseBadRequest, JsonR
 
 from challenges.models import Book
 
-
 def create_book(title: str, author_full_name: str, isbn: str) -> Book:
-    # код писать тут
-    pass
+    return Book.objects.create(title=title, author_full_name=author_full_name, isbn=isbn)
 
 
 def create_book_handler(request: HttpRequest) -> HttpResponse:
